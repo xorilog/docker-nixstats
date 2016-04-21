@@ -47,7 +47,7 @@ then
     echo "Installing sysstat..."
     make install >/dev/null 2>&1
     cd ../
-    rm -rf sysstat*
+    rm -rf $sysstat_version*
 fi
 
 if [ -n "$(command -v yum)" ]
@@ -78,7 +78,7 @@ then
     echo "Installing sysstat..."
     make install >/dev/null 2>&1
     cd ../
-    rm -rf sysstat*
+    rm -rf $sysstat_version*
 fi
 
 command -v crontab >/dev/null 2>&1 || { echo "cron is required but it's not installed.  Aborting." >&2; exit 1; }
