@@ -20,4 +20,6 @@ then
   touch /var/log/cron.log
 fi
 
-cron && tail -f /var/log/cron.log
+#cron && tail -f /var/log/cron.log
+
+while true; do echo "Gathering metrics"; bash /opt/nixstats/nixstats.sh ;echo "Sending metrics"; sleep 60; done
