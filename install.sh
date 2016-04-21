@@ -21,17 +21,17 @@ sysstat_version="sysstat-11.3.3"
 if [ -n "$(command -v apt-get)" ]
 then
     apt-get -q -y --force-yes update >/dev/null 2>&1
-    apt-get -q -y --force-yes install gzip curl make gcc xz-utils build-essential cron >/dev/null 2>&1
-    service cron start
+    apt-get -q -y --force-yes install apt-utils gzip curl make gcc xz-utils build-essential >/dev/null 2>&1
+    service cron start >/dev/null 2>&1
     if [ ! -d /opt ]
     then
         mkdir /opt
     fi
     cd /opt
-    wget http://pagesperso-orange.fr/sebastien.godard/$sysstat_version.tar.xz
-    unxz $sysstat_version.tar.xz
-    tar -xvf $sysstat_version.tar
-    cd $sysstat_version
+    wget http://pagesperso-orange.fr/sebastien.godard/$sysstat_version.tar.xz >/dev/null 2>&1
+    unxz $sysstat_version.tar.xz >/dev/null 2>&1
+    tar -xvf $sysstat_version.tar >/dev/null 2>&1
+    cd $sysstat_version >/dev/null 2>&1
     echo "Configuring sysstat..."
     if [ -f /.dockerinit ]; then
         echo "I'm inside matrix ;(";
@@ -41,18 +41,18 @@ then
     else
         echo "I'm living in real world!";
     fi
-    ./configure --prefix=/opt/sysstat --disable-file-attr --disable-nls
+    ./configure --prefix=/opt/sysstat --disable-file-attr --disable-nls >/dev/null 2>&1
     echo "Making sysstat..."
-    make
+    make >/dev/null 2>&1
     echo "Installing sysstat..."
-    make install
+    make install >/dev/null 2>&1
     cd ../
     rm -rf sysstat*
 fi
 
 if [ -n "$(command -v yum)" ]
 then
-    yum -d0 -e0 -y install cronie gzip curl gcc make xz cron >/dev/null 2>&1
+    yum -d0 -e0 -y install cronie gzip curl gcc make xz >/dev/null 2>&1
     service crond start >/dev/null 2>&1
     if [ ! -d /opt ]
     then
@@ -111,7 +111,7 @@ if [ -f /.dockerinit ]; then
     echo "I'm inside matrix ;(";
     oldstring=/proc
     newstring=/host/proc
-    grep -rl $oldstring /opt/nixstats/nixstats.sh | xargs sed -i s@$oldstring@$newstring@g
+    sed -i s@$oldstring@$newstring@g /opt/nixstats/nixstats.sh
 else
     echo "I'm living in real world!";
     if [ ! -f /etc/nixstats/user ]

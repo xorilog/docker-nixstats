@@ -15,4 +15,9 @@ then
   fi
 fi
 
+if [ ! -f /var/log/cron.log ]
+then
+  touch /var/log/cron.log
+fi
+
 cron && tail -f /var/log/cron.log
