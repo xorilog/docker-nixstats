@@ -4,6 +4,8 @@ This is a patched sysstat which can be used to lookup /proc for CoreOS use. With
 # Applied patch
 The modification is rather simple but effective. The code is executed through in the install.sh shell script which is modified to check if it is running inside a docker container. In case you run the install.sh script on a non dockerized system, it will behave as usual. This modification is done on sysstat and nixstat2.sh.
 
+cron have been added too as it is usually not present in the containers.
+
 ```shell
 echo "Configuring sysstat..."
 if [ -f /.dockerinit ]; then

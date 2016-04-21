@@ -21,7 +21,7 @@ sysstat_version="sysstat-11.3.3"
 if [ -n "$(command -v apt-get)" ]
 then
     apt-get -q -y --force-yes update >/dev/null 2>&1
-    apt-get -q -y --force-yes install gzip curl make gcc xz-utils build-essential >/dev/null 2>&1
+    apt-get -q -y --force-yes install gzip curl make gcc xz-utils build-essential cron >/dev/null 2>&1
     service cron start >/dev/null 2>&1
     if [ ! -d /opt ]
     then
@@ -52,7 +52,7 @@ fi
 
 if [ -n "$(command -v yum)" ]
 then
-    yum -d0 -e0 -y install cronie gzip curl gcc make xz >/dev/null 2>&1
+    yum -d0 -e0 -y install cronie gzip curl gcc make xz cron >/dev/null 2>&1
     service crond start >/dev/null 2>&1
     if [ ! -d /opt ]
     then
