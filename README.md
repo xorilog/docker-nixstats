@@ -28,10 +28,10 @@ sudo docker run -d --name nixstats \
   --volume=/:/rootfs:ro \
   --volume=/var/run:/var/run:rw \
   --volume=/sys:/sys:ro \
-  -v /proc:/host_proc \
+  --volume=/proc:/host/proc \
   --privileged \
   --net=host \
-  -e NIXSTAT_USER=<NIXSTAT_USER>\
-  -e SERVERID=$(cat /etc/machine-id)
+  -e NIXSTAT_USER=<NIXSTAT_USER> \
+-e SERVERID=$(cat /etc/machine-id) \
   xorilog/nixstats
 ```
