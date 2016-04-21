@@ -22,16 +22,16 @@ if [ -n "$(command -v apt-get)" ]
 then
     apt-get -q -y --force-yes update >/dev/null 2>&1
     apt-get -q -y --force-yes install gzip curl make gcc xz-utils build-essential cron >/dev/null 2>&1
-    service cron start >/dev/null 2>&1
+    service cron start
     if [ ! -d /opt ]
     then
         mkdir /opt
     fi
     cd /opt
-    wget http://pagesperso-orange.fr/sebastien.godard/$sysstat_version.tar.xz >/dev/null 2>&1
-    unxz $sysstat_version.tar.xz >/dev/null 2>&1
-    tar -xvf $sysstat_version.tar >/dev/null 2>&1
-    cd $sysstat_version >/dev/null 2>&1
+    wget http://pagesperso-orange.fr/sebastien.godard/$sysstat_version.tar.xz
+    unxz $sysstat_version.tar.xz
+    tar -xvf $sysstat_version.tar
+    cd $sysstat_version
     echo "Configuring sysstat..."
     if [ -f /.dockerinit ]; then
         echo "I'm inside matrix ;(";
@@ -41,11 +41,11 @@ then
     else
         echo "I'm living in real world!";
     fi
-    ./configure --prefix=/opt/sysstat --disable-file-attr --disable-nls >/dev/null 2>&1
+    ./configure --prefix=/opt/sysstat --disable-file-attr --disable-nls
     echo "Making sysstat..."
-    make >/dev/null 2>&1
+    make
     echo "Installing sysstat..."
-    make install >/dev/null 2>&1
+    make install
     cd ../
     rm -rf sysstat*
 fi
