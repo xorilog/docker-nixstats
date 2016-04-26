@@ -22,4 +22,4 @@ fi
 
 #cron && tail -f /var/log/cron.log
 
-while true; do echo "Gathering metrics"; bash /opt/nixstats/nixstats.sh ;echo "Sending metrics"; sleep 60; done
+while true; do echo "$(date ='%D-%T') - Gathering metrics"; bash /opt/nixstats/nixstats.sh ;echo "$(date ='%D-%T') - Sending metrics"; sleep 60; done
