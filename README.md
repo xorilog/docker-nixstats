@@ -30,6 +30,7 @@ sudo docker run -d --name nixstats \
   --volume=/sys:/sys:ro \
   --volume=/proc:/host/proc \
   --privileged \
+  --pid=host \
   --net=host \
   -e NIXSTAT_USER=<NIXSTAT_USER> \
 -e SERVERID=$(cat /etc/machine-id) \
