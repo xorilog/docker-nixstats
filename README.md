@@ -1,4 +1,5 @@
-[![Circle CI](https://circleci.com/gh/xorilog/docker-nixstats.svg?style=shield)](https://circleci.com/gh/xorilog/docker-nixstats)  
+[![Circle CI](hhttps://circleci.com/gh/xorilog/docker-nixstats.svg?style=shield)](https://circleci.com/gh/xorilog/docker-nixstats)  
+[![Image Layers](https://imagelayers.io/badge/xorilog/nixstats:latest.svg)](https://imagelayers.io/?images=xorilog/nixstats:latest 'Get your own badge on imagelayers.io')  
 
 ## Adjusted sysstat for Docker use
 This is a patched sysstat which can be used to lookup /proc for CoreOS use. Within CoreOS it is not possible to execute a volume mount on /proc. In order to achieve this, the sourcode has been patched to use /host/proc. By executing a volume mount on /host/proc, sysstat is able to collect metrics from the guest CoreOS system.
