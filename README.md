@@ -38,3 +38,11 @@ sudo docker run -d --name nixstats \
 -e SERVERID=$(cat /etc/machine-id) \
   xorilog/nixstats
 ```
+
+#HTTP proxy case
+================
+In order to make the data go through your http proxy you have to add the following parameter:
+```shell
+-e https_proxy=http://<your proxy>:<proxy_port>/
+
+```
